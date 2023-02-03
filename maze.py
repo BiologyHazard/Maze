@@ -159,7 +159,7 @@ class Maze:
                     edges.append(((i, j), (i, j+1), 1))
 
         random.shuffle(edges)
-        for i, edge in enumerate(edges):
+        for edge in edges:
             (x1, y1), (x2, y2), direction = edge
             if find(x1, y1) != find(x2, y2):
                 self.map[x1][y1][direction] = True
@@ -278,11 +278,12 @@ class Maze:
 
 if __name__ == '__main__':
     import time
-    maze = Maze(50, 50)
+    maze = Maze(16, 16)
     t0 = time.time()
     maze.generate(method=Maze.RECURSIVE_BACKTRACKING)
     # maze.generate(method=Maze.KRUSKAL)
     print(f'time used {time.time() - t0:.3f}s')
 
-    maze.export_pic('maze.png', 16, 0.125)
+    # maze.export_pic('maze.png', 5, 0.125)
+    maze.export_pic('maze.png', 4, 0.25)
     # maze.print_to_file()
